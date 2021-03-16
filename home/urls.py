@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views
 
-urlpatterns = {
+urlpatterns = [
     # ex: /home/
     path('', views.index, name='index'),
     # ex: /home/5/
@@ -11,4 +11,4 @@ urlpatterns = {
     # path('<int:question_id>/results/', views.results, name='results'),
     # # ex: /home/5/vote/
     # path('<int:question_id>/vote/', views.vote, name='vote'),
-}
+]
