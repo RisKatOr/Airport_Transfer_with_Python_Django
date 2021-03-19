@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Anasayfa {% endblock %} </title>
+	<meta name="description" content="{% block description %} description {% endblock %}">-
+	<meta name="keywords" content="{% block keywords %} keywords {% endblock %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	{% load static %}
+	<link href="{% static 'css/bootstrap.css'  %}" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css'  %}" type="text/css" media="all">
+	<link rel="stylesheet" href="{% static 'css/owl.theme.css'  %}" type="text/css" media="all">
+	<link href="{% static 'css/style.css'  %}" rel='stylesheet' type='text/css' />
+	<link href="{% static 'css/fontawesome-all.css'  %}" rel="stylesheet">
+	<link href="{% static 'css/simpleLightbox.css'  %}" rel='stylesheet' type='text/css' />
+	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,900" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700" rel="stylesheet">
+
+    {% block head %}  {% endblock %}
+
+</head>
+<body>
+    <!--/banner-->
+	<div class="banner" id="home">
+        {% include 'header.html' %}
+
+        {% block slider %}  {% endblock %}
+        {% block content %}  {% endblock %}
+
+        {% include 'footer.html' %}
+        {% block footer %}  {% endblock %}
+
+    </div>
+	<!-- //banner -->
+	<!--/banner-bottom-agile-w3ls-->
+
+</body>
+</html>
