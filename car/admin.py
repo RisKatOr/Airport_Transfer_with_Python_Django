@@ -15,7 +15,8 @@ class CategoryAdmin(admin.ModelAdmin):
     # field sadece ekleme silme düzenleme gibi durumlarda dikkate alınacak değişkenleri belirler
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ['title','category', 'status']
+    list_display = ['title','category','image_tag', 'status']
+    readonly_fields = ('image_tag',)
     list_filter = ['status','category']
     inlines =  [CarImageInline]
 
