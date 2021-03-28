@@ -52,10 +52,10 @@
 	</footer>
 	<!---->
 <!-- js -->
-	<script  src="js/jquery-2.2.3.min.js"></script>
+	<script  src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
 	<!-- //js -->
 	<!--slider-->
-	<script src="js/responsiveslides.min.js"></script>
+	<script src="{% static 'js/responsiveslides.min.js' %}"></script>
 	<script>
 		$(function () {
 
@@ -73,10 +73,10 @@
 	</script>
 	<!--//slider-->
 	<!--search-bar-->
-	<script src="js/search.js"></script>
+	<script src="{% static 'js/search.js' %}"></script>
 	<!--//search-bar-->
-	<script  src="js/simplyCountdown.js"></script>
-	<link href="css/simplyCountdown.css" rel='stylesheet' type='text/css' />
+	<script  src="{% static 'js/simplyCountdown.js' %}"></script>
+	<link href="{% static 'css/simplyCountdown.css' %}" rel='stylesheet' type='text/css' />
 	<script>
 		var d = new Date();
 
@@ -94,7 +94,7 @@
 	<!--js-->
 
 	<!-- carousel -->
-	<script src="js/owl.carousel.js"></script>
+	<script src="{% static 'js/owl.carousel.js' %}"></script>
 	<script>
 		$(document).ready(function () {
 			$('.owl-carousel').owlCarousel({
@@ -129,7 +129,7 @@
 
 
 	<!-- simpleLightbox -->
-	<script src="js/simpleLightbox.js"></script>
+	<script src="{% static 'js/simpleLightbox.js' %}"></script>
 	<script>
 		$('.proj_gallery_grid a').simpleLightbox();
 	</script>

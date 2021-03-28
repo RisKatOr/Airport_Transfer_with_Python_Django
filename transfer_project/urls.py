@@ -18,9 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path
 
+from home import views
+
 urlpatterns = [
-    path('car/', include('car.urls')),
     path('home/', include('home.urls')),
+    path('aboutus/', views.aboutus, name='aboutus'),
+    path('car/', include('car.urls')),
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
