@@ -1,5 +1,6 @@
 from django.db import models
-
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 class Setting(models.Model):
@@ -23,9 +24,9 @@ class Setting(models.Model):
     facebook = models.CharField(blank=True,max_length=50)
     instagram = models.CharField(blank=True,max_length=50)
     twitter = models.CharField(blank=True,max_length=50)
-    aboutus = models.TextField(blank=True)
-    contact = models.TextField(blank=True)
-    references = models.TextField(blank=True)
+    aboutus = RichTextField()
+    contact = RichTextField()
+    references = RichTextField()
     icon= models.ImageField(blank=True, upload_to='images/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

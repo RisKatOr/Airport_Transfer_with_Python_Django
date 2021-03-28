@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 from django.utils.safestring import mark_safe
+from ckeditor.fields import RichTextField
+
 
 
 class Category(models.Model):
@@ -12,6 +14,7 @@ class Category(models.Model):
     title = models.CharField(max_length=30)
     keywords = models.CharField(max_length=255)
     description = models.CharField(max_length=30)
+    detail = RichTextField()
     status = models.CharField(max_length=10, choices=STATUS)
     image = models.ImageField(blank=True, upload_to='images/')
     slug = models.SlugField()
@@ -30,10 +33,10 @@ class Car(models.Model):
     status = models.CharField(max_length=10, choices=STATUS)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
-    keywords = models.CharField(max_length=255)
+    detail = RichTextField()
     description = models.CharField(max_length=30)
+    keywords = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
-    detail=models.TextField();
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
