@@ -34,3 +34,15 @@ class Setting(models.Model):
     def __str__(self):
         return self.title
 
+class Setting(models.Model):
+    STATUS = (
+        ('True', 'Evet'),
+        ('False', 'Hayır'),
+    )
+
+
+
+    def __str__(self):
+        return self.name
+
+

@@ -1,6 +1,6 @@
 {% extends "homebase.html" %}
 
-{% block title %} Hakkımızda -{{ setting.company}}  {% endblock %}
+{% block title %} References -{{ setting.company}}  {% endblock %}
 {% block keywords %} HOME PAGE {% endblock %}
 {% block description %} HOME PAGE {% endblock %}
 
@@ -14,8 +14,8 @@
 
 
 {% block content %}
-  		<!--/banner-->
-	<div class="banner-inner" id="home">
+
+    	<div class="banner-inner" id="home">
 		<!-- header -->
 
 		<!-- //header -->
@@ -33,13 +33,13 @@
 			<li class="breadcrumb-item">
 				<a href="index.html">Home</a>
 			</li>
-			<li class="breadcrumb-item active">About Us</li>
+			<li class="breadcrumb-item active">References</li>
 		</ol>
 		<!--/main-->
 	<section class="banner-bottom-agile-w3ls">
 		<div class="container">
-			<h3 class="tittle-w3ls text-center">About Us</h3>
-                {{ setting.aboutus | safe }}
+			<h3 class="tittle-w3ls text-center">References</h3>
+			{{ setting.references | safe }}
 		</div>
 	</section>
 	<!--//main-->
