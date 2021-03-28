@@ -24,48 +24,14 @@
 
 
 {% block content %}
-<!--  		&lt;!&ndash;/banner&ndash;&gt;-->
-<!--	<div class="banner-inner" id="home">-->
-<!--		&lt;!&ndash; header &ndash;&gt;-->
 
-<!--		&lt;!&ndash; //header &ndash;&gt;-->
-<!--			&lt;!&ndash; banner&ndash;&gt;-->
-<!--			<div class="wrapper-inner">-->
-<!--				<h3 class="logo text-center">-->
-<!--					<a class="navbar-brand" href="index.html">-->
-<!--						<i class="fas fa-cubes"></i> Hwaiting</a>-->
-<!--				</h3>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--		&lt;!&ndash; //banner &ndash;&gt;-->
-<!--		&lt;!&ndash;//nav&ndash;&gt;-->
-<!--		<ol class="breadcrumb">-->
-<!--			<li class="breadcrumb-item">-->
-<!--				<a href="index.html">Home</a>-->
-<!--			</li>-->
-<!--			<li class="breadcrumb-item active">Contact</li>-->
-<!--		</ol>-->
-<!--		&lt;!&ndash;/main&ndash;&gt;-->
-<!--	<section class="banner-bottom-agile-w3ls">-->
-<!--		<div class="container">-->
-<!--			<h3 class="tittle-w3ls text-center">Contact</h3>-->
-<!--			<p class="sub text-center">We love to discuss your idea</p>-->
-
-<!--			{{ setting.contact | safe }}-->
-
-
-<!--		</div>-->
-
-<!--	</section>-->
-	<!--//main-->
-<!--/banner-->
 	<div class="banner-inner" id="home">
 
 		<!-- banner-text -->
 		<div class="wrapper-inner">
 			<h3 class="logo text-center">
 				<a class="navbar-brand" href="index.html">
-					<i class="fas fa-cubes"></i> Transco</a>
+					<i class="fas fa-cubes"></i> Hwaiting</a>
 
 
 			</h3>
@@ -106,7 +72,7 @@
 							</div>
 							<div class="col-md-8 address-right text-left">
 								<h6>Address</h6>
-								<p> California, USA
+								<p> {{ setting.address | safe }}
 
 								</p>
 							</div>
@@ -121,7 +87,7 @@
 							<div class="col-md-8 address-right text-left">
 								<h6>Email</h6>
 								<p>Email :
-									<a href="mailto:example@email.com"> mail@example.com</a>
+									<a href="mailto:example@email.com"> {{ setting.email | safe }}</a>
 
 								</p>
 							</div>
@@ -135,7 +101,7 @@
 							</div>
 							<div class="col-md-8 address-right text-left">
 								<h6>Phone</h6>
-								<p>+1 234 567 8901</p>
+								<p>{{ setting.phone | safe }}</p>
 
 							</div>
 
@@ -172,6 +138,22 @@
 						</div>
 					</div>
 				</form>
+
+				{% if messages %}
+					{% for messages in messages %}
+						<div class="alert alert- {{message.tags}}" role="alert">
+							{{message}}
+						</div>
+					{% endfor %}
+				{% endif %}
+
+
+				<form action="" method="post">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<input class="form-control" type="submit" value="Submit">
+				</form>
+
 			</div>
 		</div>
 	</section>
