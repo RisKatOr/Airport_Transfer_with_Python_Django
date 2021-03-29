@@ -48,26 +48,46 @@
 					</div>
 				</div>
 			</li>
+<!--			<li>-->
+<!--				<div class="banner-img one">-->
+<!--					<div class="banner-info text-center">-->
+<!--						<h3 class="logo">-->
+<!--							<a class="navbar-brand" href="index.html">-->
+<!--								<i class="fas fa-cubes"></i> Hwaiting</a>-->
+<!--						</h3>-->
+<!--						<h4>Let us move you to your new life.</h4>-->
+<!--						<div class="content">-->
+<!--							<div class="simply-countdown-custom" ></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</li>-->
+
+			{% for dl in sliderdata %}
 			<li>
-				<div class="banner-img one">
+				<div class="banner-img one" style="background: url( {{dl.image.url}})  no-repeat center center;">
 					<div class="banner-info text-center">
 						<h3 class="logo">
-							<a class="navbar-brand" href="index.html">
-								<i class="fas fa-cubes"></i> Transco</a>
+							<a class="navbar-brand" href="/product/{{dl.id}}/{{dl.slug}}">
+								<i class="fas fa-cubes" ></i> {{ dl.title}}</a>
 						</h3>
-						<h4>Let us move you to your new life.</h4>
+						<h4> {{ dl.description}} </h4>
 						<div class="content">
 							<div class="simply-countdown-custom" id="simply-countdown-custom"></div>
 						</div>
 					</div>
 				</div>
 			</li>
+
+			{% endfor %}
+
+
 			<li>
 				<div class="banner-img two">
 					<div class="banner-info text-center">
 						<h3 class="logo">
 							<a class="navbar-brand" href="index.html">
-								<i class="fas fa-cubes"></i> Transco</a>
+								<i class="fas fa-cubes"></i> Hwaiting</a>
 						</h3>
 						<h4>Let us move you to your new life.</h4>
 						<div class="banner-form">
