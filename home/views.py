@@ -1,4 +1,4 @@
-from django.core.checks import messages
+from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
@@ -35,11 +35,11 @@ def contact(request):
             data.ip =request.META.get('REMOTE_ADDR')
             data.message =form.cleaned_data['message']
             data.save() #save to database
-            messages.success(request, "We got your message successfully and we will turn back you soon.. Thank you..")
-            return HttpResponseRedirect('/iletisim')
+            messages.success(request, "We got your message successfully and we will turn back you soon.. Thank you! :)")
+            return HttpResponseRedirect('/contact')
 
     setting = Setting.objects.get(pk=1)
     form= ContactForm()
-    context = {'setting': setting, 'page':'contact'}
+    context = {'setting': setting, 'form': form}
     # the reason why we used 'page' is we can use a if operation if we need
     return render(request, 'contact.html', context)

@@ -1,6 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
+
 # Create your models here.
 from django.forms import ModelForm, TextInput, Textarea
 
@@ -38,14 +38,15 @@ class Setting(models.Model):
 
 class ContactFormMessage(models.Model):
     STATUS = (
-        ('Done', 'Done'),
-        ('Still', 'Still'),
+        ('New', 'New'),
+        ('Not Solved', 'Not Solved'),
+        ('Solved', 'Solved'),
     )
     name= models.CharField(blank=True, max_length=20)
     email= models.CharField(blank=True, max_length=50)
     subject= models.CharField(blank=True, max_length=50)
     message= models.CharField(blank=True, max_length=500)
-    status= models.CharField(max_length=10, choices=STATUS, default='NEW')
+    status= models.CharField(max_length=10, choices=STATUS, default='New')
     ip=models.CharField(blank=True,max_length=20)
     note=models.CharField(blank=True,max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -60,8 +61,8 @@ class ContactForm(ModelForm):
         model = ContactFormMessage
         fields= ['name','email','subject','message']
         widgets = {
-            'name' : TextInput(attrs={'class': 'form-group' , 'placeholder' : 'Name & Surname'}),
-            'email': TextInput(attrs={'class': 'form-group', 'placeholder': 'Email Address'}),
-            'subject' : TextInput(attrs={'class': 'form-group' , 'placeholder' : 'Subject'}),
-            'message' : Textarea(attrs={'class': 'form-group' , 'placeholder' : 'Message','rows':'5'}),
+            'name' : TextInput(attrs={'class': 'form-control' , 'placeholder' : 'Name & Surname'}),
+            'email': TextInput(attrs={'class': 'form-control', 'placeholder': 'Email Address'}),
+            'subject' : TextInput(attrs={'class': 'form-control' , 'placeholder' : 'Subject'}),
+            'message' : Textarea(attrs={'class': 'form-control' , 'placeholder' : 'Message','rows':'5'}),
         }

@@ -112,46 +112,26 @@
 		</div>
 		<div class="container">
 			<div class="contact_grid_right">
-				<form action="#" method="post">
-					<div class="row contact_left_grid">
-						<div class="col-md-6 con-left">
-							<div class="form-group">
-								<label for="validationCustom01 my-2">Name</label>
-								<input class="form-control" type="text" name="Name" placeholder="" required="">
-							</div>
-							<div class="form-group">
-								<label for="exampleFormControlInput1">Email</label>
-								<input class="form-control" type="email" name="Email" placeholder="" required="">
-							</div>
-							<div class="form-group">
-								<label for="validationCustom03 my-2">Subject</label>
-								<input class="form-control" type="text" name="Subject" placeholder="" required="">
-							</div>
-						</div>
-						<div class="col-md-6 con-right">
-							<div class="form-group">
-								<label for="textarea">Message</label>
-								<textarea id="textarea" placeholder=""></textarea>
-							</div>
-							<input class="form-control" type="submit" value="Submit">
-
-						</div>
-					</div>
-				</form>
 
 				{% if messages %}
-					{% for messages in messages %}
-						<div class="alert alert- {{message.tags}}" role="alert">
-							{{message}}
+
+					{% for message in messages %}
+						<div class="col-md-8 ">
+							<div class="alert alert-{{message.tags}}" role="alert">
+								{{ message }}
+							</div>
 						</div>
 					{% endfor %}
+
 				{% endif %}
 
 
 				<form action="" method="post">
-					{% csrf_token %}
-					{{ form.as_p }}
-					<input class="form-control" type="submit" value="Submit">
+					<div class="col-md-8 ">
+						{% csrf_token %}
+						{{ form.as_p }}
+						<input class="form-control" type="submit" value="Submit">
+					</div>
 				</form>
 
 			</div>
