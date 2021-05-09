@@ -50,12 +50,12 @@
 			</li>
 
 
-			{% for dl in sliderdata %}
+			{% for dl in cars %}
 			<li>
 				<div class="banner-img one" style="background: url( {{dl.image.url}})  no-repeat center center;">
 					<div class="banner-info text-center">
 						<h3 class="logo">
-							<a class="navbar-brand" href="/product/{{dl.id}}/{{dl.slug}}">
+							<a class="navbar-brand" href="/car/{{dl.id}}/{{dl.slug}}">
 								<i class="fas fa-cubes" ></i> {{ dl.title}}</a>
 						</h3>
 						<h4> {{ dl.description}} </h4>

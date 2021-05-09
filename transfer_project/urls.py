@@ -26,6 +26,7 @@ urlpatterns = [
     path('references/', views.references, name='references'),
     path('contact/', views.contact, name='contact'),
     path('car/', include('car.urls')),
+    path('category/<int:id>/<slug:slug>/',  views.category_cars ,name='category_cars'),
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),

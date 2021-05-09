@@ -21,13 +21,17 @@ def index(request):
 
 def aboutus(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, 'page':'aboutus'}
+    category = Category.objects.all()
+    category = Category.objects.all()
+    context = {'setting': setting, 'page':'aboutus','category': category}
     # the reason why we used 'page' is we can use a if operation if we need
     return render(request, 'aboutus.html', context)
 
 def references(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, 'page':'references'}
+    category = Category.objects.all()
+
+    context = {'setting': setting, 'page':'references','category': category}
     # the reason why we used 'page' is we can use a if operation if we need
     return render(request, 'references.html', context)
 
@@ -47,7 +51,21 @@ def contact(request):
             return HttpResponseRedirect('/contact')
 
     setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
     form= ContactForm()
-    context = {'setting': setting, 'form': form}
+    context = {'setting': setting, 'form': form,'category': category}
     # the reason why we used 'page' is we can use a if operation if we need
     return render(request, 'contact.html', context)
+
+def category_cars(request, id,slug):
+
+    category = Category.objects.all()
+    categorydata = Category.objects.get(pk= id)
+    cars= Car.objects.filter(category_id = id)
+    context = {'cars': cars,
+               'category': category,
+               'categorydata': categorydata,
+
+               }
+    # the reason why we used 'page' is we can use a if operation if we need
+    return render(request, 'cars.html', context)
