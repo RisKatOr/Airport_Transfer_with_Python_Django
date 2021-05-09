@@ -37,27 +37,52 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/aboutus">About</a>
 				</li>
-				<li class="nav-item">
+				 <li class="nav-item dropdown">
+
 					<a class="nav-link" href="/references">References</a>
+				</li>
+				<li class="nav-item dropdown">
+					 {% load mptt_tags %}
+					<a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+							Cars
+					</a>
+
+					{% recursetree category %}
+					  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							{% recursetree category %}
+
+						<a class="dropdown-item" {% if not node.is_leaf_node %} href="/category/{{node.slug}}"   {% endif %} >{{ node.title }}</a>
+						  {% if not node.is_leaf_node %}
+
+						  <a class="dropdown-item" href="/category/{{node.slug}}"  > {{ children }}</a>
+
+						  {% endif %}
+
+						  	{% endrecursetree %}
+
+					  </div>
+
+					 {% endrecursetree %}
 				</li>
 
 
-				 <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-							    aria-expanded="false">
-								Dropdown
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item text-center" href="team.html">Team</a>
-								<a class="dropdown-item text-center" href="404.html">Services</a>
 
-							</div>
-						</li>
+
+
+
+
 
 
 				<li class="nav-item">
 					<a class="nav-link" href="/contact">Contact</a>
 				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="/contact">Contact</a>
+				</li>
+
+
 
 
 			</ul>
@@ -65,3 +90,34 @@
 		</div>
 	</nav>
 </header>
+
+
+<!-- <li class="nav-item dropdown">-->
+<!--					 {% load mptt_tags %}-->
+<!--					<a class="nav-link dropdown-toggle" href="#" id="" role="button" data-toggle="dropdown" aria-haspopup="true"-->
+<!--						aria-expanded="false">-->
+<!--						Cars-->
+<!--					</a>-->
+<!--					  {% recursetree category %}-->
+<!--					<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--						<ul class="dropdown-item text-center" >-->
+<!--								{% recursetree category %}-->
+
+<!--										{{ node.title }}-->
+
+<!--										{% if not node.is_leaf_node %}-->
+<!--											<li class="children" style="" >-->
+<!--												<a href="/category/{{node.slug}}" class="dropdown-item text-center" style="">-->
+<!--													>> {{ children }}-->
+<!--												</a>-->
+
+<!--											</li>-->
+<!--										{% endif %}-->
+
+<!--								{% endrecursetree %}-->
+
+<!--						</ul>-->
+<!--					</div>-->
+<!--					 {% endrecursetree %}-->
+
+<!--				</li>-->

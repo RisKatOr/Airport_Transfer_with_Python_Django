@@ -579,7 +579,7 @@ h3.logo a.navbar-brand i {
 }
 
 .banner-img.one {
-
+    background: url(../images/banner3.jpg) no-repeat 0px 0px;
 }
 
 .banner-img.two {
@@ -2011,3 +2011,13 @@ footer {
 @media(max-width:320px) {}
 
 /*--//responsive--*/
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}

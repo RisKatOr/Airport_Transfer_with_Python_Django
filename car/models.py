@@ -14,7 +14,7 @@ class Category(MPTTModel):
     )
     title = models.CharField(max_length=30)
     keywords = models.CharField(max_length=255)
-    description = models.CharField(max_length=30)
+    description = models.CharField(max_length=255)
     detail = RichTextField()
     status = models.CharField(max_length=10, choices=STATUS)
     image = models.ImageField(blank=True, upload_to='images/')
@@ -40,6 +40,7 @@ class Category(MPTTModel):
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
     image_tag.short_description = 'Image'
+
 
 class Car(models.Model):
     STATUS = (
