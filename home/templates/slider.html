@@ -49,10 +49,9 @@
 				</div>
 			</li>
 
-
-			{% for dl in cars %}
+				{% for dl in sliderdata %}
 			<li>
-				<div class="banner-img one" style="background: url( {{dl.image.url}})  no-repeat center center;">
+				<div class="banner-img one" style="background: url( {{dl.image.url}} )  no-repeat center center;">
 					<div class="banner-info text-center">
 						<h3 class="logo">
 							<a class="navbar-brand" href="/car/{{dl.id}}/{{dl.slug}}">
@@ -67,6 +66,9 @@
 			</li>
 
 			{% endfor %}
+
+
+
 
 
 

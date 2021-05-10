@@ -52,7 +52,7 @@
 					  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							{% recursetree category %}
 
-							<a class="dropdown-item" {% if  node.is_leaf_node %} href="/category/{{node.slug}}"  {% endif %}>{{ node.title }}</a>
+							<a class="dropdown-item" {% if node.is_leaf_node %} href="/category/{{node.id}}/{{node.slug}}"  {% endif %}>{{ node.title }}</a>
 							  {% if not node.is_leaf_node %}
 							  <a class="dropdown-item" href="/category/{{node.id}}/{{node.slug}}" >{{ children }}</a>
 
@@ -77,9 +77,6 @@
 					<a class="nav-link" href="/contact">Contact</a>
 				</li>
 
-				<li class="nav-item">
-					<a class="nav-link" href="/contact">Contact</a>
-				</li>
 
 
 
@@ -89,34 +86,3 @@
 		</div>
 	</nav>
 </header>
-
-
-<!-- <li class="nav-item dropdown">-->
-<!--					 {% load mptt_tags %}-->
-<!--					<a class="nav-link dropdown-toggle" href="#" id="" role="button" data-toggle="dropdown" aria-haspopup="true"-->
-<!--						aria-expanded="false">-->
-<!--						Cars-->
-<!--					</a>-->
-<!--					  {% recursetree category %}-->
-<!--					<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--						<ul class="dropdown-item text-center" >-->
-<!--								{% recursetree category %}-->
-
-<!--										{{ node.title }}-->
-
-<!--										{% if not node.is_leaf_node %}-->
-<!--											<li class="children" style="" >-->
-<!--												<a href="/category/{{node.slug}}" class="dropdown-item text-center" style="">-->
-<!--													>> {{ children }}-->
-<!--												</a>-->
-
-<!--											</li>-->
-<!--										{% endif %}-->
-
-<!--								{% endrecursetree %}-->
-
-<!--						</ul>-->
-<!--					</div>-->
-<!--					 {% endrecursetree %}-->
-
-<!--				</li>-->

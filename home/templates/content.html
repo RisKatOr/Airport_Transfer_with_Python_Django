@@ -47,107 +47,34 @@
 			</div>
 		</div>
 	</div>
-	<!--//banner-bottom-agile-w3ls-->
-	<!--/services-->
-	<section class="banner-bottom-agile-w3ls services">
+	<!--TODAYS CHOİCE-->
+	<section class="testimonials banner-bottom-agile-w3ls">
 		<div class="container">
-			<h3 class="tittle-w3ls cen text-center">Moving Services</h3>
-			<div class="row inner-sec-w3layouts-agileits">
-				<div class="col-lg-6 service-in text-center">
-					<div class="card">
-						<div class="card-body">
-							<i class="fas fa-home"></i>
-							<h5 class="card-title">Local Moving</h5>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna
-								aliqua uta enim ad minim ven iam quis nostrud exercitation ullamco.</p>
+			<h3 class="tittle-w3ls text-center">Recommended for You</h3>
+			<div class="inner-sec-w3layouts-agileits">
+				<div class="owl-carousel owl-theme">
+					{% for dl in daycar %}
+					<div class="item">
+						<div class="icon-test">
+							<i class="fas fa-thumbs-up"></i>
+						</div>
+						<div class="card feature text-left" style="margin-top:20px">
+							<img src="{{dl.image.url}}" alt=" " class="img-fluid rounded" />
+							<h5 class="card-title">{{ dl.title}} </h5>
+							<p class="card-text">{{ dl.description}} </p>
 							<div class="view my-4">
-								<a href="single.html" class="btn btn-primary read-m" data-toggle="modal" data-target="#exampleModalCenter">Read More</a>
+								<a href="/car/{{dl.id}}/{{dl.slug}}" class="btn btn-primary read-m" >Read More</a>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-6 service-in  text-center">
-					<div class="card">
-						<div class="card-body">
-							<i class="fas fa-truck"></i>
-							<h5 class="card-title">Long Distance Moves</h5>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna
-								aliqua uta enim ad minim ven iam quis nostrud exercitation ullamco</p>
-							<div class="view my-4">
-								<a href="single.html" class="btn btn-primary read-m" data-toggle="modal" data-target="#exampleModalCenter">Read More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 service-in  text-center mt-4">
-					<div class="card">
-						<div class="card-body">
-							<i class="fab fa-fly"></i>
-							<h5 class="card-title">Commercial Moving</h5>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna
-								aliqua uta enim ad minim ven iam quis nostrud exercitation ullamco.</p>
-							<div class="view my-4">
-								<a href="single.html" class="btn btn-primary read-m" data-toggle="modal" data-target="#exampleModalCenter">Read More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 service-in text-center mt-4">
-					<div class="card">
-						<div class="card-body">
-							<i class="fas fa-bus"></i>
-							<h5 class="card-title">Storage Services</h5>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna
-								aliqua uta enim ad minim ven iam quis nostrud exercitation ullamco..</p>
-							<div class="view my-4">
-								<a href="single.html" class="btn btn-primary read-m" data-toggle="modal" data-target="#exampleModalCenter">Read More</a>
-							</div>
-						</div>
-					</div>
+					{% endfor %}
+
 				</div>
 			</div>
 		</div>
 	</section>
-	<!--//services-->
-	<!--/features-->
-	<section class="banner-bottom-agile-w3ls">
-		<div class="feature-main container-fluid text-left">
-			<div class="row">
-				<div class="col-lg-3 feature text-left">
-					<h3>Special Services</h3>
-					<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna..</p>
-					<div class="view my-4">
-						<a href="single.html" class="btn btn-primary read-m" data-toggle="modal" data-target="#exampleModalCenter">Read More</a>
-					</div>
-				</div>
-				<div class="col-lg-3 card feature text-left">
-					<img src="{% static 'images/f1.jpg' %}" alt=" " class="img-fluid rounded" />
-					<h5 class="card-title">Title goes here</h5>
-					<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna..</p>
-					<div class="view my-4">
-						<a href="single.html" class="btn btn-primary read-m" data-toggle="modal" data-target="#exampleModalCenter">Read More</a>
-					</div>
-				</div>
-				<div class="col-lg-3 card feature text-left">
-					<img src="{% static 'images/f2.jpg' %}" alt=" " class="img-fluid rounded" />
-					<h5 class="card-title">Title goes here</h5>
-					<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna..</p>
-					<div class="view my-4">
-						<a href="single.html" class="btn btn-primary read-m" data-toggle="modal" data-target="#exampleModalCenter">Read More</a>
-					</div>
-				</div>
-				<div class="col-lg-3 card feature text-left">
-					<img src="{% static 'images/f3.jpg' %}" alt=" " class="img-fluid rounded" />
-					<h5 class="card-title">Title goes here</h5>
-					<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna..</p>
-					<div class="view my-4">
-						<a href="single.html" class="btn btn-primary read-m" data-toggle="modal" data-target="#exampleModalCenter">Read More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--//features-->
+
+	<!--//RANDOM-->
 	<!--/areas-->
 	<section class="banner-bottom-agile-w3ls areas text-center">
 		<div class="container">
@@ -167,7 +94,7 @@
 				<div class="owl-carousel owl-theme">
 					<div class="item">
 						<div class="icon-test">
-							<i class="fas fa-quote-left"></i>
+							<i class="fas fa-thumbs-up"></i>
 						</div>
 						<div class="feedback-info">
 							<div class="feedback-top p-4">

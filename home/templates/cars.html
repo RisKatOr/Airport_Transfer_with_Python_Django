@@ -5,10 +5,9 @@
 {% block description %} HOME PAGE {% endblock %}
 
 {% block head %}
-   	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<link href="css/style.css" rel='stylesheet' type='text/css' />
-	<link rel="stylesheet" href="css/lightbox.css">
-	<link href="css/fontawesome-all.css" rel="stylesheet">
+
+
+
 	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,900" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700" rel="stylesheet">
 {% endblock %}
@@ -36,26 +35,33 @@
 		<!--//nav-->
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="index.html">Home</a>
+				<a href="#">Home</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="#">Cars</a>
 			</li>
 			<li class="breadcrumb-item active">{{categorydata.title}}</li>
 		</ol>
 		<!--/main-->
 	<section class="banner-bottom-agile-w3ls">
 		<div class="container">
-			<h3 class="tittle-w3ls text-center">Gallery</h3>
-			{% for dl in sliderdata %}
+			<h3 class="tittle-w3ls text-center">{{categorydata.title}}</h3>
+
+
 			<div class="row inner-sec-w3layouts-agileits">
+				{% for dl in cars %}
 				<div class="col-md-3 gallery-grids">
-					<a class="w3 wow zoomIn animated" href="images/g1.jpg" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut metus sit amet magna vehicula eleifend in in urna.">
+
+					<a class="w3 wow zoomIn animated" href="/car/{{dl.id}}/{{dl.slug}}" data-lightbox="example-set" >
 						<img src="{{dl.image.url}}" class="img-fluid rounded zoom-img" alt="" />
 						<div class="gallery-b-wrapper">
 							<h5>{{ dl.title}}</h5>
 						</div>
 					</a>
 				</div>
+					{% endfor %}
 			</div>
-			{% endfor %}
+
 		</div>
 	</section>
 	<!--//main-->

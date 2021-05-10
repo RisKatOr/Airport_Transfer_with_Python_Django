@@ -11,11 +11,18 @@ def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata = Car.objects.all()[:4]
     category = Category.objects.all()
+    daycar = Car.objects.all()[:3]
+    lastcar = Car.objects.all().order_by('id')[:3]
+    randomcar = Car.objects.all().order_by('?')[:3]
 
     context = {'setting': setting,
                'page':'home',
+               'sliderdata': sliderdata,
                'category': category,
-               'sliderdata':sliderdata}
+               'daycar':daycar,
+               'lastcar': lastcar,
+               'randomcar': randomcar,
+               }
 
     return render(request, 'index.html', context)
 
