@@ -1,0 +1,103 @@
+{% extends "homebase.html" %}
+
+{% block title %} {{ car.title}}  {% endblock %}
+{% block keywords %} {{ car.title}}  {% endblock %}
+{% block description %} {{ car.title}}  {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+
+
+{% block content %}
+<div class="banner-inner" id="home">
+
+		<!-- banner-text -->
+		<div class="wrapper-inner">
+			<h3 class="logo text-center">
+				<a class="navbar-brand" href="index.html">
+					<i class="fas fa-cubes"></i> Hwaiting</a>
+
+
+			</h3>
+		</div>
+	</div>
+	<!-- //banner -->
+	<!--//nav-->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a >Home</a>
+		</li>
+
+        <li class="breadcrumb-item">
+			<a href="/category/{{car.category_id}}/{{car.category.slug}}" >{{car.category}}</a>
+		</li>
+		<li class="breadcrumb-item active">{{ car.title}} </li>
+	</ol>
+	<!--/main-->
+    <section class="banner-bottom-agile-w3ls">
+		<div class="container">
+            <div class="row inner-sec-w3layouts-agileits team-sec">
+				<div class="col-md-12 team-main">
+					<div class="row">
+
+						<div class="col-md-8 team-img">
+							<img src="{{car.image.url}}" alt=" " class="img-fluid rounded" />
+						</div>
+						<div class="col-md-4 team-info text-left">
+							<h4>{{ car.title}}</h4>
+							<h6>BURAYA BASE_PRICE GELEBİLİR. GELMEYECEKSE BAŞKA BİŞEY YAZ </h6>
+							<p>{{car.detail | safe}}</p>
+							<div class="row  pt-3 mt-3 team-social border-top">
+								<h5 class="col-md-4 text-left">RENT</h5>
+<!--								<ul class="col-md-8 social_list1 text-right">-->
+
+<!--									<li>-->
+<!--										<a href="#" class="facebook1 ">-->
+<!--											<i class="fab fa-facebook-f"></i>-->
+
+<!--										</a>-->
+<!--									</li>-->
+<!--									<li>-->
+<!--										<a href="#" class="twitter2 mx-2">-->
+<!--											<i class="fab fa-twitter"></i>-->
+
+<!--										</a>-->
+<!--									</li>-->
+<!--									<li>-->
+<!--										<a href="#" class="dribble3">-->
+<!--											<i class="fab fa-dribbble"></i>-->
+<!--										</a>-->
+<!--									</li>-->
+
+<!--								</ul>-->
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+<!--        <section class="testimonials banner-bottom-agile-w3ls">-->
+		<div class="container">
+			<h6 class="tittle-w3ls text-left" style="margin-top:20px">Gallery</h6>
+			<div class="inner-sec-w3layouts-agileits">
+				<div class="owl-carousel owl-theme">
+					{% for dl in images %}
+					<div class="item">
+
+						<div class="card feature text-left" style="margin-top:20px">
+							<img src="{{dl.image.url}}" alt=" " class="img-fluid rounded" />
+
+						</div>
+					</div>
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+{% endblock %}

@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from car.models import Car, Category
+from car.models import Car, Category, Images
 from home.models import Setting, ContactForm, ContactFormMessage
 
 
@@ -76,3 +76,17 @@ def category_cars(request, id,slug):
                }
     # the reason why we used 'page' is we can use a if operation if we need
     return render(request, 'cars.html', context)
+
+
+def car_detail(request,id,slug):
+    category = Category.objects.all()
+    car = Car.objects.get(pk=id)
+    images= Images.objects.filter(car=id)
+    context = {
+                'car': car,
+                'images': images,
+               'category': category,
+
+               }
+
+    return render(request, 'car_detail.html',context)
