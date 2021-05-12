@@ -40,6 +40,12 @@ hr.dotted {
   border-top: 3px dotted #bbb;
 }
 
+.review{
+	color:black;
+  font-size: 15px;
+  margin: 10px;
+}
+
 	</style>
 {% endblock %}
 
@@ -142,11 +148,35 @@ hr.dotted {
 					</div>
 
 					<div class="row contact_left_grid">
-						<div class="col-md-6 con-left">
+						<div class="col-md-6 con-left overflow-auto" >
 
-						<p style="color:black">kdfjkadfdafadfad</p>
-							<hr class="dotted">
+						{% for review in comments %}
+							<div style="" class="review">
 
+
+									<i style="font-size: 15px; color: #fca311;"  class="fas fa-quote-right"></i>
+									{{review.user.first_name}} {{review.user.last_name}}
+
+								<div  class="col-md-12 text-left" style="font-size:10px;">
+									{{review.created_at}}
+								</div>
+
+								<div>
+									<i style=" color: #d00000;" class="fas fa-star{% if review.rate < 1 %}-o empty{%endif %}"></i>
+									<i style=" color: #d00000;"  class="fas fa-star{% if review.rate < 2 %}-o empty{%endif %}"></i>
+									<i style=" color: #d00000;" class="fas fa-star{% if review.rate < 3 %}-o empty{%endif %}"></i>
+									<i style=" color: #d00000;" class="fas fa-star{% if review.rate < 4 %}-o empty{%endif %}"></i>
+									<i style=" color: #d00000;" class="fas fa-star{% if review.rate < 5 %}-o empty{%endif %}"></i>
+
+								</div>
+								<div>
+									{{review.comment}}
+								</div>
+								<hr class="dotted">
+
+							</div>
+
+							{% endfor %}
 						</div>
 						<div class="col-md-6 con-right">
 							{% for message in messages %}
@@ -181,7 +211,7 @@ hr.dotted {
 								{% if user.id is not None %}
 								<input class="form-control" type="submit" value="Submit">
 								{% else %}
-									To Submit a comment please login first
+									To Submit a comment please <a href="/login"> Login </a>  first
 								{% endif %}
 							</form>
 						</div>
