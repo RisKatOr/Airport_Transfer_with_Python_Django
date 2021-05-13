@@ -31,6 +31,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
+    path('search/', views.car_search, name='car_search'),
 ]
 if settings.DEBUG: # new
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

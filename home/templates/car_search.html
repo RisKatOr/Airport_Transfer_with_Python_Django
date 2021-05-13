@@ -1,0 +1,108 @@
+{% extends "homebase.html" %}
+
+{% block title %} Hakkımızda -{{ setting.company}}  {% endblock %}
+{% block keywords %} HOME PAGE {% endblock %}
+{% block description %} HOME PAGE {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+<style>
+	.borderless td, .borderless th {
+    border: none;
+}
+</style>
+{% endblock %}
+
+{% block slider %}
+
+{% endblock %}
+
+
+{% block content %}
+  		<!--/banner-->
+	<div class="banner-inner" id="home">
+		<!-- header -->
+
+		<!-- //header -->
+			<!-- banner-->
+			<div class="wrapper-inner">
+				<h3 class="logo text-center">
+					<a class="navbar-brand" href="index.html">
+						<i class="fas fa-cubes"></i> Hwaiting</a>
+				</h3>
+			</div>
+		</div>
+		<!-- //banner -->
+		<!--//nav-->
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="index.html">Home</a>
+			</li>
+			<li class="breadcrumb-item active">Search</li>
+		</ol>
+
+	<!--/main-->
+<section class="banner-bottom-agile-w3ls ">
+		<div class="container">
+			<table class="table borderless">
+<!--			  <thead class="thead-dark">-->
+<!--				<tr>-->
+<!--				 -->
+<!--				  <th scope="col">First</th>-->
+<!--				  <th scope="col">Last</th>-->
+<!--				  <th scope="col">Handle</th>-->
+<!--				</tr>-->
+<!--			  </thead>-->
+				{% for dl in cars %}
+				  <tbody style="padding-top: 115px;">
+					<tr>
+				
+					  <td>
+						  <a href="/car/{{dl.id}}/{{dl.slug}}">
+							  <img src="{{dl.image.url}}"
+								   class="rounded"
+							  style=" height: 100px;">
+						  </a>
+					  </td>
+					  <td>
+						  <h6>
+							  <a href="/car/{{dl.category.id}}/{{dl.category.slug}}"
+							  style="text-decoration: none; color:black">
+							   {{dl.category}}
+						  </a>
+						  </h6>
+
+					  </td>
+						<td>
+						  <h6>
+							  <a href="/car/{{dl.id}}/{{dl.slug}}"
+							  style="text-decoration: none; color:black">
+							   {{dl.title}}
+						  </a>
+						  </h6>
+
+					  </td>	<td>
+						  <h6 style="color: #d62828">
+							  PRİCE GELECEK
+							  {{dl.price}} ₩
+						  </h6>
+
+					  </td>
+
+					</tr>
+
+				  </tbody>
+				{%endfor%}
+			</table>
+
+
+
+		</div>
+	</section>
+
+	<!--//main-->
+
+{% endblock %}
+
+
+
