@@ -1,10 +1,11 @@
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
 from django.forms import ModelForm
+from django.urls import reverse
 from django.utils.safestring import mark_safe
-from ckeditor.fields import RichTextField
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
@@ -20,7 +21,7 @@ class Category(MPTTModel):
     detail = RichTextField()
     status = models.CharField(max_length=10, choices=STATUS)
     image = models.ImageField(blank=True, upload_to='images/')
-    slug = models.SlugField(max_length =50, null = True, blank = False)
+    slug = models.SlugField(null=False, unique=True)
     parent= models.ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -43,6 +44,8 @@ class Category(MPTTModel):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
     image_tag.short_description = 'Image'
 
+    def get_absolute_url(self):
+        return reverse('category_detail', kwargs = {'slug': self.slug})
 
 class Car(models.Model):
     STATUS = (
@@ -56,10 +59,11 @@ class Car(models.Model):
     description = models.CharField(max_length=30)
     keywords = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
-    slug = models.SlugField(max_length =50, null = True, blank = False)
+    slug = models.SlugField(null=False, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    def get_absolute_url(self):
+        return reverse('category_detail', kwargs = {'slug': self.slug})
 
 
     def __str__(self):

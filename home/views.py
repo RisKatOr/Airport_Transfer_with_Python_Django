@@ -1,4 +1,5 @@
 from django.contrib import messages
+import json
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
@@ -102,8 +103,13 @@ def car_search(request):
         if form.is_valid():
             category = Category.objects.all()
             query = form.cleaned_data['query']
-            cars = Car.objects.filter(title__icontains = query) #select * from car where title like %query%
+            filter = form.cleaned_data['filter']
 
+            if filter == 0:
+                cars = Car.objects.filter(title__icontains = query) #select * from car where title like %query%
+
+            else:
+                cars = Car.objects.filter(title__icontains=query, category_id= filter)
             context = {
                 'cars': cars,
                 'category': category,
@@ -111,3 +117,19 @@ def car_search(request):
         return render(request, 'car_search.html', context)
 
     return HttpResponseRedirect('/')
+
+
+def car_search_auto(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        car = Car.objects.filter(title__icontains=q)
+        results = []
+        for rs in car:
+            car_json = {}
+            car_json = rs.title
+            results.append(car_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
