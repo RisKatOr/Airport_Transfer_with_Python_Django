@@ -1,0 +1,102 @@
+{% extends "homebase.html" %}
+
+{% block title %} Login {% endblock %}
+{% block keywords %} HOME PAGE {% endblock %}
+{% block description %} HOME PAGE {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+
+{% endblock %}
+
+{% block slider %}
+
+{% endblock %}
+
+
+{% block content %}
+{% load static %}
+
+	<div class="banner-inner" id="home">
+
+		<!-- banner-text -->
+		<div class="wrapper-inner">
+			<h3 class="logo text-center">
+				<a class="navbar-brand" href="index.html">
+					<i class="fas fa-cubes"></i> Hwaiting</a>
+
+
+			</h3>
+		</div>
+	</div>
+	<!-- //banner -->
+	<!--//nav-->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="index.html">Home</a>
+		</li>
+		<li class="breadcrumb-item active">Login</li>
+	</ol>
+	<!--/main-->
+	<section class="banner-bottom-agile-w3ls">
+
+		<div class="container">
+			<h5 class="tittle-w3ls text-center">LOGIN</h5>
+		</div>
+
+
+
+		<div class="container">
+			<div class="container">
+			<div class="contact_grid_right">
+				<div class="col-md-8 con-left">
+				{% if messages %}
+
+					{% for message in messages %}
+						<div class="col-md-8 ">
+							<div class="alert alert-{{message.tags}}" role="alert">
+								{{ message }}
+							</div>
+						</div>
+					{% endfor %}
+
+				{% endif %}
+					</div>
+				<form  method="post">
+					{%csrf_token %}
+					<div class="row contact_left_grid">
+						<div class="col-md-6 con-left">
+							<div class="form-group">
+								<label for="validationCustom01 my-2">Username</label>
+								<input class="form-control" type="text" name="username" placeholder="" required="">
+							</div>
+							<div class="form-group">
+								<label for="exampleFormControlInput1">Password</label>
+								<input class="form-control" type="password" name="password" placeholder="" required="">
+							</div>
+								<input class="form-control" type="submit" value="Signup">
+						</div>
+						<div class="col-md-6 con-right">
+					<img src="{% static 'images/fly.jpg' %}" class="img-fluid rounded" alt="" />
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!--//main-->
+
+{% endblock %}
+
+
+

@@ -1,0 +1,103 @@
+{% extends "homebase.html" %}
+
+{% block title %} Join {% endblock %}
+{% block keywords %} HOME PAGE {% endblock %}
+{% block description %} HOME PAGE {% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block slider %}
+
+{% endblock %}
+
+
+{% block content %}
+{% load static %}
+
+	<div class="banner-inner" id="home">
+
+		<!-- banner-text -->
+		<div class="wrapper-inner">
+			<h3 class="logo text-center">
+				<a class="navbar-brand" href="index.html">
+					<i class="fas fa-cubes"></i> Hwaiting</a>
+
+
+			</h3>
+		</div>
+	</div>
+	<!-- //banner -->
+	<!--//nav-->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="index.html">Home</a>
+		</li>
+		<li class="breadcrumb-item active">Sign Up</li>
+	</ol>
+	<!--/main-->
+	<section class="banner-bottom-agile-w3ls">
+
+		<div class="container">
+			<h5 class="tittle-w3ls text-center">Sign Up</h5>
+		</div>
+
+
+
+		<div class="container">
+			<div class="container">
+			<div class="contact_grid_right">
+				<div class="col-md-8 con-left">
+				{% if messages %}
+
+					{% for message in messages %}
+						<div class="col-md-8 ">
+							<div class="alert alert-{{message.tags}}" role="alert">
+								{{ message }}
+							</div>
+						</div>
+					{% endfor %}
+
+				{% endif %}
+					</div>
+
+					<div class="row contact_left_grid">
+						<div class="col-md-6 con-left">
+							<img src="{% static 'images/01.svg' %}" class="img-fluid rounded" alt="" />
+
+						</div>
+						<div class="col-md-6 con-right">
+							<form  method="post">
+								{% csrf_token %}
+								{% for field in form %}
+									<div class="form-group">
+<!--								 <br>-->
+									<label >{{field.label_tag}}</label>
+
+									{{field}}
+										</div>
+									{% if field.help_text %}
+										<small style="color:grey">{{ field.help_text }} </small>
+									{% endif %}
+									{% for error in field.errors %}
+										<p style="color: red"> {{error}}</p>
+									{% endfor %}
+								{% endfor %}
+								{% csrf_token %}
+								<input class="form-control" type="submit" value="Sign Up" style="margin-top: 15px">
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--//main-->
+
+{% endblock %}
+
+
+

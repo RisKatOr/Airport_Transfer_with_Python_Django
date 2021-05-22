@@ -33,6 +33,9 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('search/', views.car_search, name='car_search'),
     path('search_auto/', views.car_search_auto, name='car_search_auto'),
+    path('logout/', views.logout_view, name='logout_view'),
+    path('login/', views.login_view, name='login_view'),
+    path('join/', views.join_view, name='join_view'),
 ]
 if settings.DEBUG: # new
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

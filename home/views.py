@@ -5,8 +5,12 @@ from django.shortcuts import render
 
 # Create your views here.
 from car.models import Car, Category, Images, Comment
+from django.contrib.auth import logout
 
+from home.forms import SignUpForm
 from home.models import Setting, ContactForm, ContactFormMessage
+from django.contrib.auth import authenticate, login
+
 
 
 def index(request):
@@ -133,3 +137,51 @@ def car_search_auto(request):
         data = 'fail'
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+
+        else:
+            # Return an 'invalid login' error message.
+            messages.warning(request, "Wrong username or password !")
+            return HttpResponseRedirect('/login')
+    category = Category.objects.all()
+    context = {
+
+        'category': category,
+
+
+    }
+    return render(request, 'login.html', context)
+
+def join_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = request.POST['username']
+            password = request.POST['password1']
+            user = authenticate(request, username=username, password=password)
+            login(request,user)
+            return HttpResponseRedirect('/login')
+    form= SignUpForm()
+    category = Category.objects.all()
+    context = {
+        'category': category,
+        'form': form,
+
+
+    }
+    return render(request, 'join.html', context)
