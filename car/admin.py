@@ -20,6 +20,7 @@ class CarAdmin(admin.ModelAdmin):
     readonly_fields = ('image_tag',)
     list_filter = ['status','category']
     inlines =  [CarImageInline]
+    prepopulated_fields = {'slug': ('title',)}
 
 class ImagesAdmin(admin.ModelAdmin):
     list_display = ['title','car']
