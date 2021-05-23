@@ -1,0 +1,154 @@
+{% extends "homebase.html" %}
+
+{% block title %} Profile {% endblock %}
+{% block keywords %} HOME PAGE {% endblock %}
+{% block description %} HOME PAGE {% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block slider %}
+
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="banner-inner" id="home">
+
+		<!-- banner-text -->
+		<div class="wrapper-inner">
+			<h3 class="logo text-center">
+				<a class="navbar-brand" href="index.html">
+					<i class="fas fa-cubes"></i> Hwaiting</a>
+
+
+			</h3>
+		</div>
+	</div>
+
+	<section class="banner-bottom-agile-w3ls">
+		<div class="container">
+			<div class="contact_grid_right">
+				<form action="#" method="post">
+					<div class="row contact_left_grid">
+						<div class="col-md-8 con-left">
+								<label >Informations</label>
+							<br>
+							<br>
+							<br>
+							<img src="{{profile.image.url}}" style=" border-radius: 50%;   width: 300px;"   class="rounded mx-auto d-block " alt="">
+							<hr>
+
+							<table style="  width: 100%; ">
+
+							  <tr>
+								<td style="color: #d90429 ;  font-weight: bold;">
+									<div class="sub-hd mb-4 about-info text-left">
+									Username:
+
+									</div></td>
+								<td>	<div class="sub-hd mb-4 about-info text-left">
+										 {{profile.user_name}}
+
+									</div>
+								</td>
+							  </tr>
+								<tr>
+									<td style="color: #d90429 ;  font-weight: bold;">
+									<div class="sub-hd mb-4 about-info text-left">
+									Name:
+
+									</div></td>
+								<td>	<div class="sub-hd mb-4 about-info text-left">
+										 {{profile.first_name}}
+
+									</div>
+								</td>
+							  </tr>
+							  <tr>
+									<td style="color: #d90429 ;  font-weight: bold;">
+										<div class="sub-hd mb-4 about-info text-left">
+									Email:
+
+									</div></td>
+								<td>	<div class="sub-hd mb-4 about-info text-left">
+										 {{profile.user.email}}
+
+									</div>
+								</td>
+							  </tr>
+							  <tr>
+								<td style="color: #d90429 ;  font-weight: bold;">
+									<div class="sub-hd mb-4 about-info text-left">
+									Phone:
+
+									</div></td>
+								<td>	<div class="sub-hd mb-4 about-info text-left">
+										{{profile.phone}}
+
+									</div>
+								</td>
+							  </tr>
+								<tr>
+								<td style="color: #d90429 ;  font-weight: bold;">
+									<div class="sub-hd mb-4 about-info text-left">
+									Country:
+
+									</div></td>
+								<td>	<div class="sub-hd mb-4 about-info text-left">
+										{{profile.country}}
+
+									</div>
+								</td>
+							  </tr>
+							  <tr>
+								<td style="color: #d90429 ;  font-weight: bold;">
+									<div class="sub-hd mb-4 about-info text-left">
+									Address:
+
+									</div></td>
+								<td>	<div class="sub-hd mb-4 about-info text-left">
+										{{profile.address}}
+
+									</div>
+								</td>
+							  </tr>
+								<hr>
+							  <tr>
+								<td style="color: #d90429 ;  font-weight: bold;">
+									<div class="sub-hd mb-4 about-info text-left">
+									City:
+
+									</div></td>
+								<td>	<div class="sub-hd mb-4 about-info text-left">
+										{{profile.city}}
+
+									</div>
+								</td>
+							  </tr>
+
+
+							</table>
+​
+						</div>
+						<div class="col-md-4 con-right">
+
+								<label>User Panel</label>
+
+								{% include "user_panel.html" %}
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!--//main-->
+
+{% endblock %}
+
+
+
