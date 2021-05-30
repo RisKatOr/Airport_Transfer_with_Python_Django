@@ -37,6 +37,7 @@ urlpatterns = [
     path('login/', views.login_view, name='login_view'),
     path('join/', views.join_view, name='join_view'),
     path('user/', include('user.urls')),
+    path('reservation/', include('reservation.urls')),
 
 ]
 if settings.DEBUG: # new

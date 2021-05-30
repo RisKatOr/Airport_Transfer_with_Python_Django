@@ -8,7 +8,7 @@ from car.models import Car, Category, Images, Comment
 from django.contrib.auth import logout
 
 from home.forms import SignUpForm
-from home.models import Setting, ContactForm, ContactFormMessage
+from home.models import Setting, ContactForm, ContactFormMessage, UserProfile
 from django.contrib.auth import authenticate, login
 
 
@@ -151,6 +151,9 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            current_user = request.user
+            userprofile = UserProfile.objects.get(user_id=current_user.id)
+            request.session['userimage'] = userprofile.image.url
             return HttpResponseRedirect('/')
 
         else:
@@ -170,18 +173,27 @@ def join_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = request.POST['username']
-            password = request.POST['password1']
-            user = authenticate(request, username=username, password=password)
-            login(request,user)
-            return HttpResponseRedirect('/login')
-    form= SignUpForm()
+            form.save()  # completed sign up
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            # Create data in profile table for user
+            current_user = request.user
+            data = UserProfile()
+            data.user_id = current_user.id
+            data.image = "images/users/Profile.jpg" #boş gelmesi durumunda hata almamak için default bir  değer atamışız gibi düşünebiliriz
+            data.save()
+            messages.success(request, 'Your account has been created!')
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, form.errors)
+            return HttpResponseRedirect('/join')
+
+    form = SignUpForm()
     category = Category.objects.all()
     context = {
         'category': category,
         'form': form,
-
-
     }
     return render(request, 'join.html', context)

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'reservation.apps.ReservationConfig',
     'car.apps.CarConfig',
     'home.apps.HomeConfig',
     'user.apps.UserConfig',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'django_summernote',
     'mptt',
+
 ]
 
 MIDDLEWARE = [

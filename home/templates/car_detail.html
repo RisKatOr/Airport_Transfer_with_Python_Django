@@ -12,7 +12,7 @@
 /* Styling h1 and links
 ––––––––––––––––––––––––––––––––– */
 h1[alt="Simple"] {color: white;}
-a[href], a[href]:hover {color: grey; font-size: 0.5em; text-decoration: none}
+/*a[href], a[href]:hover {color: grey; font-size: 0.5em; text-decoration: none}*/
 
 
 .starrating > input {display: none;}  /* Remove radio buttons */
@@ -75,23 +75,89 @@ hr.dotted {
 			<a href="/category/{{car.category_id}}/{{car.category.slug}}" >{{car.category}}</a>
 		</li>
 		<li class="breadcrumb-item active">{{ car.title}} </li>
+
 	</ol>
 	<!--/main-->
-    <section class="banner-bottom-agile-w3ls">
+    <section class="banner-bottom-agile-w3ls" style="padding: 0;">
 		<div class="container">
+			<div class="banner-info text-center" style="width: 100%;
+    					padding-top: 50px; margin-bottom: 50px" >
+
+						<div class="banner-form" >
+							{% for message in messages %}
+							<div class="alert alert-{{message.tags}}" role="alert">
+								{{message }}
+							</div>
+							{%endfor %}
+							<form action="/reservation/addtocart/{{car.id}}" method="post">
+								{% csrf_token %}
+								<div class="row">
+									<div class="col-md-2">
+<!--									<input type="text" class="form-control" name="name" placeholder="Name" required="">-->
+  										<input type="date" id="startday" class="form-control" style="height: 50px;" name="date">
+
+									</div>
+									<div class="col-md-2">
+<!--									<input type="text" class="form-control" name="name" placeholder="Name" required="">-->
+  										<input type="time" id="appt" class="form-control" style="	height: 50px;" name="time">
+
+									</div>
+									<div class="col-md-3">
+										<select class="form-control option" name="from_location">
+											<option>Transport From</option>
+											<option>Albania</option>
+											<option>Belgium</option>
+											<option>Cameroon</option>
+											<option>Dominica</option>
+											<option>France</option>
+											<option>Jersey</option>
+										</select>
+									</div>
+									<div class="col-md-3">
+										<select class="form-control option" name="to_location">
+											<option>Transport To</option>
+											<option>Colombia</option>
+											<option>Indonesia</option>
+											<option>Japan</option>
+											<option>Lebanon</option>
+											<option>Luxembourg</option>
+											<option>Montserrat</option>
+										</select>
+									</div>
+									<div class="col-md-2">
+										<button type="submit"  style="background-color: #d90429; color: white" class="btn btn-primary submit">RESERVE</button>
+									</div>
+
+
+								</div>
+							</form>
+						</div>
+					</div>
             <div class="row inner-sec-w3layouts-agileits team-sec">
 				<div class="col-md-12 team-main">
 					<div class="row">
 
 						<div class="col-md-8 team-img">
-							<img src="{{car.image.url}}" alt=" " class="img-fluid rounded" />
+							<img src="{{car.image.url}}" alt=" " class="img-fluid rounded"  style="width: 550px"/>
 						</div>
-						<div class="col-md-4 team-info text-left">
-							<h4>{{ car.title}}</h4>
+						<div class="col-md-4 team-info text-left" >
+							<div style="position: absolute;
+                									bottom: 50%;">
+							<h4 style="">{{ car.title}}</h4>
 							<h6>BURAYA BASE_PRICE GELEBİLİR. GELMEYECEKSE BAŞKA BİŞEY YAZ </h6>
-							<p>{{car.detail | safe}}</p>
-							<div class="row  pt-3 mt-3 team-social border-top">
-								<h5 class="col-md-4 text-left">RENT</h5>
+<!--								<div class="d-grid gap-12">-->
+<!--								 <button class="form-control btn btn-danger" type="submit"-->
+<!--										style="-->
+<!--" value="Submit">-->
+<!--									  RESERVE</button>-->
+
+<!--								</div>-->
+							</div>
+
+
+							<div class="row  pt-3 mt-3 team-social ">
+<!--								<button type="button" class="btn btn-warning">RESERVE</button>-->
+
 <!--								<ul class="col-md-8 social_list1 text-right">-->
 
 <!--									<li>-->
@@ -137,7 +203,11 @@ hr.dotted {
 
 				</div>
 			</div>
-		</div>
+			<p>{{car.detail | safe}}</p>
+
+
+			</div>
+
 
 	</section>
 	<div class="container" style="margin-top:-50px">
