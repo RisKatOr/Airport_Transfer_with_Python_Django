@@ -89,7 +89,7 @@ hr.dotted {
 								{{message }}
 							</div>
 							{%endfor %}
-							<form action="/reservation/addtocart/{{car.id}}" method="post">
+							<form action="/shopcart/addtocart/{{car.id}}" method="post">
 								{% csrf_token %}
 								<div class="row">
 									<div class="col-md-2">

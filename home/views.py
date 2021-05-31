@@ -11,15 +11,18 @@ from home.forms import SignUpForm
 from home.models import Setting, ContactForm, ContactFormMessage, UserProfile
 from django.contrib.auth import authenticate, login
 
+from reservation.models import ShopCart
 
 
 def index(request):
+    current_user = request.user
     setting = Setting.objects.get(pk=1)
     sliderdata = Car.objects.all()[:4]
     category = Category.objects.all()
     daycar = Car.objects.all()[:3]
     lastcar = Car.objects.all().order_by('id')[:3]
     randomcar = Car.objects.all().order_by('?')[:3]
+    request.session['cart_items'] = ShopCart.objects.filter(user_id=current_user.id).count()  # count items in shop cart
 
     context = {'setting': setting,
                'page':'home',

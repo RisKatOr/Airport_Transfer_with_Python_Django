@@ -19,6 +19,10 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 
 from home import views
+from reservation import views as reservationviews
+
+
+
 
 urlpatterns = [
     path('home/', include('home.urls')),
@@ -37,7 +41,9 @@ urlpatterns = [
     path('login/', views.login_view, name='login_view'),
     path('join/', views.join_view, name='join_view'),
     path('user/', include('user.urls')),
-    path('reservation/', include('reservation.urls')),
+    path('shopcart/', include('reservation.urls')),
+    path('reservation/', reservationviews.shopcart, name='reservation'),
+
 
 ]
 if settings.DEBUG: # new
