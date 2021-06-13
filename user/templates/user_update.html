@@ -1,0 +1,76 @@
+{% extends "homebase.html" %}
+
+{% block title %} Profile {% endblock %}
+{% block keywords %} HOME PAGE {% endblock %}
+{% block description %} HOME PAGE {% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block slider %}
+
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="banner-inner" id="home">
+
+		<!-- banner-text -->
+		<div class="wrapper-inner">
+			<h3 class="logo text-center">
+				<a class="navbar-brand" href="index.html">
+					<i class="fas fa-cubes"></i> Hwaiting</a>
+
+
+			</h3>
+		</div>
+	</div>
+
+	<section class="banner-bottom-agile-w3ls">
+		<div class="container">
+			<div class="contact_grid_right">
+				<form action="#" method="post">
+					<div class="row contact_left_grid">
+						<div class="col-md-8 con-left">
+
+								<label >UPDATE PROFILE</label>
+						<br>
+							<br>
+							<br>
+
+							<img src="{{user.userprofile.image.url}}" style=" border-radius: 50%;   width: 200px;"   class="rounded mx-auto d-block " alt="">
+                        <form  method="post" enctype="multipart/form-data">
+                                {%csrf_token %}
+                            <div class="form-group">
+                                {{user_form.as_p}}
+                                {{profile_form.as_p}}
+                            </div>
+                      <div class="row contact_left_grid">
+                            <div class="col-md-4 con-left">
+                                    <input class="form-control" type="submit" value="Signup">
+                            </div>
+                        </div>
+                        </form>
+						</div>
+
+						<div class="col-md-4 con-right">
+
+								<label>User Panel</label>
+
+								{% include "user_panel.html" %}
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!--//main-->
+
+{% endblock %}
+
+
+
