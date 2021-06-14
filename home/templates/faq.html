@@ -1,0 +1,54 @@
+{% extends "homebase.html" %}
+
+{% block title %} FAQ -{{ setting.company}}  {% endblock %}
+{% block keywords %} FAQ {% endblock %}
+{% block description %} FAQ {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+{% block slider %}
+
+{% endblock %}
+
+
+{% block content %}
+
+    	<div class="banner-inner" id="home">
+		<!-- header -->
+
+		<!-- //header -->
+			<!-- banner-->
+			<div class="wrapper-inner">
+				<h3 class="logo text-center">
+					<a class="navbar-brand" href="index.html">
+						<i class="fas fa-cubes"></i> Hwaiting</a>
+				</h3>
+			</div>
+		</div>
+		<!-- //banner -->
+		<!--//nav-->
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="index.html">Home</a>
+			</li>
+			<li class="breadcrumb-item active">FAQ </li>
+		</ol>
+		<!--/main-->
+	<section class="banner-bottom-agile-w3ls">
+		<div class="container">
+			<h3 class="tittle-w3ls text-center">Frequently Asked Questions </h3>
+			{% for rs in faq %}
+			{{ rs.question }}
+			{{ rs.answer }}
+
+			{% endfor %}
+		</div>
+	</section>
+	<!--//main-->
+
+{% endblock %}
+
+
+

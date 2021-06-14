@@ -1,0 +1,112 @@
+{% extends "homebase.html" %}
+
+{% block title %} Comments {% endblock %}
+{% block keywords %} Comments {% endblock %}
+{% block description %} Comments {% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block slider %}
+
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="banner-inner" id="home">
+
+		<!-- banner-text -->
+		<div class="wrapper-inner">
+			<h3 class="logo text-center">
+				<a class="navbar-brand" href="index.html">
+					<i class="fas fa-cubes"></i> Hwaiting</a>
+
+
+			</h3>
+		</div>
+	</div>
+
+	<section class="banner-bottom-agile-w3ls">
+		<div class="container">
+			<div class="contact_grid_right">
+				<form action="#" method="post">
+					<div class="row contact_left_grid">
+						<div class="col-md-8 con-left">
+
+								<label >My Comments</label>
+
+							<br>
+							<br>
+							<br>
+							{% if messages %}
+
+
+								{% for message in messages %}
+										<div class="col-md-12 ">
+											<div class="alert alert-{{message.tags}}" role="alert">
+												{{ message }}
+											</div>
+										</div>
+									{% endfor %}
+
+								{% endif %}
+
+						<table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">Id</th>
+                              <th scope="col">Car</th>
+                              <th scope="col">Subject</th>
+                              <th scope="col">Comment</th>
+                              <th scope="col">Status</th>
+                              <th scope="col">Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          {% for rs in comments %}
+                            <tr>
+                              <th scope="row">{{rs.id}}</th>
+                              <td style="">
+								   <a href="/car/{{rs.car_id}}/{{rs.car.slug}}" style="text-decoration: none; color: #0e0f10"> Delete
+								  		{{rs.car.title}}
+							  		</a>
+							  </td>
+                              <td>{{rs.subject}}</td>
+								<td>{{rs.comment}}</td>
+                              <td>{{rs.status}}</td>
+                              <td>{{rs.created_at}}</td>
+                              <td>
+                                  <a href="/user/deletecomment/{{rs.id}}" style="color:#d90429;" onclick="return confirm('Do you want to delete this comment!?')"> Delete</a>
+                              </td>
+
+                            </tr>
+                          {% endfor %}
+
+                          </tbody>
+                        </table>
+
+
+
+						</div>
+
+						<div class="col-md-4 con-right">
+
+								<label>User Panel</label>
+
+								{% include "user_panel.html" %}
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!--//main-->
+
+{% endblock %}
+
+
+

@@ -43,6 +43,7 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('shopcart/', include('reservation.urls')),
     path('reservation/', reservationviews.shopcart, name='reservation'),
+    path('faq/', views.faq, name='faq'),
 
 
 ]
