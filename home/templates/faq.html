@@ -6,6 +6,15 @@
 
 {% block head %}
     <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
 {% endblock %}
 
 {% block slider %}
@@ -38,12 +47,25 @@
 		<!--/main-->
 	<section class="banner-bottom-agile-w3ls">
 		<div class="container">
-			<h3 class="tittle-w3ls text-center">Frequently Asked Questions </h3>
-			{% for rs in faq %}
-			{{ rs.question }}
-			{{ rs.answer }}
+			<h3 class="tittle-w3ls text-center">Frequently Asked Questions </h3> <br>
+
+
+
+			<div id="accordion">
+				{% for rs in faq %}
+			  <h3 style="color: #d90429; background-color: #FFFFFF; border-color: #FFFFFF">	{{ rs.question }}</h3>
+			  <div style="border-color: #FFFFFF">
+				<p>
+					{{ rs.answer }}
+				</p>
+			  </div>
 
 			{% endfor %}
+
+			</div>
+
+
+
 		</div>
 	</section>
 	<!--//main-->
