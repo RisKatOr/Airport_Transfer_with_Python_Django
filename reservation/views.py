@@ -4,6 +4,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
+import haversine as hs
+from haversine import Unit
+
 from car.models import Category
 from reservation.models import ShopCartForm, ShopCart
 
@@ -23,8 +26,24 @@ def addtocart(request, id):
          data = ShopCart()
          data.user_id = current_user.id
          data.car_id = id
-         data.from_location =form.cleaned_data['from_location']
-         data.to_location =form.cleaned_data['to_location']
+         fromdata =form.cleaned_data['from_location']
+         fromdata = fromdata.split(',')
+         fromLatitude= float(fromdata[0])
+         fromLongitude=float(fromdata[1])
+         fromPlace=fromdata[2]
+         data.from_location = fromPlace
+         todata = form.cleaned_data['to_location']
+         todata = todata.split(',')
+         toLatitude = float(todata[0])
+         toLongitude = float(todata[1])
+         toPlace = todata[2]
+         data.to_location = toPlace
+         loc1 = (toLatitude, toLongitude)
+         loc2 = (fromLatitude, fromLongitude)
+
+         distance = hs.haversine(loc1, loc2, unit=Unit.KILOMETERS)
+         data.distance = distance
+         # data.to_location =form.cleaned_data['to_location']
          data.date =form.cleaned_data['date']
          data.time =form.cleaned_data['time']
          data.save()

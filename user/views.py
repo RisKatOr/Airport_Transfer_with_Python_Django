@@ -32,7 +32,7 @@ def user_update(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Account has been updated!')
-            return redirect('/editprofile')
+            return redirect('/user')
 
     else:
         category = Category.objects.all()

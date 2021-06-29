@@ -14,14 +14,17 @@ class ShopCart (models.Model):
     to_location = models.CharField( max_length=50, null=True)
     date = models.CharField( max_length=50, null=True)
     time = models.CharField( max_length=50, null=True)
+    distance = models.IntegerField( max_length=50, null=True)
 
     def __str__(self):
         return self.car.title
 
     @property
     def calculated_price(self):
-        return (self.car.km_price + self.car.base_price)
-        # return (self.distance * self.car.km_price + self.car.base_price)
+        # return self.distance
+        # return (self.car.km_price + self.car.base_price)
+        return (int(self.distance * self.car.km_price + self.car.base_price))
+
 
     @property
     def price(self):
@@ -43,7 +46,7 @@ class Reservation(models.Model):
     )
 
     user_id =  models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    transfer_id =models.IntegerField(null=False)
+    car_id =models.IntegerField(null=False)
     from_location_id =models.IntegerField(null=False)
     to_location_id =models.IntegerField(null=False)
     price = models.FloatField(null=False,default="0")
@@ -52,6 +55,11 @@ class Reservation(models.Model):
     flightarrivedate =models.CharField( max_length=50, null=True)
     flightarrivetime =models.CharField( max_length=50, null=True)
     pickuptime =models.CharField( max_length=50, null=True)
+    first_name= models.CharField( max_length=50, null=True)
+    last_name= models.CharField( max_length=50, null=True)
+    phone= models.CharField( max_length=50, null=True)
+    code = models.CharField(max_length=5, editable=False, null=True)
+    note= models.TextField(null=True)
     ip = models.CharField( max_length=50, null=True)
     status = models.CharField( max_length=50, default='New', choices=STATUS)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -61,6 +69,11 @@ class Reservation(models.Model):
     def __str__(self):
         return self.user.first_name
 
+
+class ReserveForm(ModelForm):
+    class Meta:
+        model= Reservation
+        fields=['airline','flightnumber','flightarrivedate','flightarrivetime','pickuptime','note']
 
 class ReserveCar(models.Model):
     STATUS= (
@@ -79,6 +92,4 @@ class ReserveCar(models.Model):
 
     def __str__(self):
         return self.car.title
-
-
 

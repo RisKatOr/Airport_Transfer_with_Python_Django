@@ -40,17 +40,31 @@
 							<br>
 							<br>
 							<br>
-							<a href="/user/editprofile" type="button" class="btn btn-danger" style="float: right; margin-right: 50px;">Edit Profile</a>
-							<a href="/user/changepassword" type="button" class="btn btn-warning" style="float: right; margin-right: 5px;">Change Password</a>
-							<br>
-							<br>
-							<br>
-							<img src="{{profile.image.url}}" style=" border-radius: 50%;   width: 300px;"   class="rounded mx-auto d-block " alt="">
-							<hr>
+
+
+
 
 							<table style="  width: 100%; ">
 
+
+								<tr>
+
+								<td style="padding-bottom: 20px;">
+										<img src="{{profile.image.url}}" style=" border-radius: 50%;   height: 150px; float: left"   class="rounded mx-auto d-block " alt="">
+								</td>
+								<td style="color: #d90429 ;  font-weight: bold; ">
+									<div class="sub-hd mb-4 about-info text-left" style="float: right">
+										<a href="/user/editprofile" type="button" class="btn btn-danger" >Edit Profile</a>
+
+										<a href="/user/changepassword" type="button" class="btn btn-warning"  >Change Password</a>
+
+									</div>
+								</td>
+							  </tr>
+
+
 							  <tr>
+
 								<td style="color: #d90429 ;  font-weight: bold;">
 									<div class="sub-hd mb-4 about-info text-left">
 									Username:
@@ -122,7 +136,7 @@
 									</div>
 								</td>
 							  </tr>
-								<hr>
+
 							  <tr>
 								<td style="color: #d90429 ;  font-weight: bold;">
 									<div class="sub-hd mb-4 about-info text-left">

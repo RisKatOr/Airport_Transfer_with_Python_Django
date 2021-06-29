@@ -7,6 +7,7 @@ from django.forms import ModelForm, TextInput, Textarea
 from django.utils.safestring import mark_safe
 
 
+
 class Setting(models.Model):
     STATUS = (
         ('True', 'Evet'),
