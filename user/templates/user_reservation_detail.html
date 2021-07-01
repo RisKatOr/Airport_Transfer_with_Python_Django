@@ -1,0 +1,273 @@
+{% extends "homebase.html" %}
+
+{% block title %} Reservation Detail{% endblock %}
+{% block keywords %}  Reservation Detail {% endblock %}
+{% block description %}  Reservation Detail {% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block slider %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="banner-inner" id="home">
+
+    <!-- banner-text -->
+    <div class="wrapper-inner">
+        <h3 class="logo text-center">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-cubes"></i> Hwaiting</a>
+
+
+        </h3>
+    </div>
+</div>
+
+<section class="banner-bottom-agile-w3ls">
+    <div class="container">
+        <div class="contact_grid_right">
+            <form action="#" method="post">
+                <div class="row contact_left_grid">
+                    <div class="col-md-8 con-left">
+
+                        <label>Reservation Details</label>
+
+                        <br>
+                        <br>
+                        <br>
+                        {% if messages %}
+
+
+                        {% for message in messages %}
+                        <div class="col-md-12 ">
+                            <div class="alert alert-{{message.tags}}" role="alert">
+                                {{ message }}
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        {% endif %}
+
+                        <table class="table " style="border: none;">
+                            <!--							{% for rs in reservation %}-->
+                            <!--						  &#9; 		{{rs.car.title}}-->
+                            <!--							{% endfor %}-->
+
+                            <tbody>
+                            {% for rs in reservation %}
+
+                            <tr>
+
+                                <td style="">
+                                    <strong>Car : </strong>
+
+                                </td>
+                                <td style="">
+
+                                    <a href="/car/{{rs.car_id}}/{{rs.car.slug}}"
+                                       style="text-decoration: none; color: #0e0f10">
+                                        <img src="{{rs.car.image.url}}" alt=" " class="img-fluid rounded"
+                                             style="width: 100px"/>
+                                      &emsp;    {{rs.car.title}}
+                                    </a>
+                                </td>
+
+
+                            </tr>
+                            <tr>
+
+                                <td style="">
+                                    <strong>Code : </strong>
+
+                                </td>
+                                <td style="color: #d90429">
+
+                                    {{rs.code}}
+
+                                </td>
+
+
+                            </tr>
+                            <tr>
+
+                                <td style="">
+                                    <strong>Date/Time : </strong>
+
+                                </td>
+                                <td style="">
+
+                                    {{rs.pickupdate}} {{rs.pickuptime}}
+
+                                </td>
+
+
+                            </tr>
+                            <tr>
+
+                                <td style="">
+                                    <strong>Total : </strong>
+
+                                </td>
+                                <td style="">
+
+                                    {{rs.total}}
+
+                                </td>
+
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td style="">
+                                    <strong>First name : </strong>
+
+                                </td>
+                                <td style="">
+
+                                    {{rs.first_name}}
+
+                                </td>
+
+
+                            </tr>
+                            <tr>
+
+                                <td style="">
+                                    <strong>Last name : </strong>
+
+                                </td>
+                                <td style="">
+
+                                    {{rs.last_name}}
+
+                                </td>
+
+
+                            </tr>
+                            <tr>
+
+                                <td style="">
+                                    <strong>Phone : </strong>
+
+                                </td>
+                                <td style="">
+
+                                    {{rs.phone}}
+
+                                </td>
+
+
+                            </tr>
+                            <tr>
+
+                                <td style="">
+                                    <strong>Address : </strong>
+
+                                </td>
+                                <td style="">
+
+                                    {{rs.address}} / {{rs.country}}
+
+                                </td>
+
+
+                            </tr>
+                            <tr>
+
+                                <td style="">
+                                    <strong>Flight Details : </strong>
+
+                                </td>
+                                <td style="">
+
+                                    {{rs.airline}} <br> {{rs.flightnumber}}<br>
+                                    {{rs.flightarrivedate}} {{rs.flightarrivetime}}
+
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style="">
+                                    <strong> Note: </strong>
+
+                                </td>
+                                <td style="">
+
+                                    {{rs.note}}
+
+                                </td>
+
+
+                            </tr>
+                            <tr>
+
+                                <td style="">
+                                    <strong> Admin Note: </strong>
+
+                                </td>
+                                <td style="">
+
+                                    {{rs.adminnote}}
+
+                                </td>
+
+
+                            </tr>
+                            <tr>
+
+                                <td style="">
+                                    <strong> Status: </strong>
+
+                                </td>
+                                <td style="color: #d90429">
+
+                                    {{rs.status}}
+
+                                </td>
+
+
+                            </tr>
+
+
+                            {% endfor %}
+                            <td>{{rs.first_name}} {{rs.last_name}}</td>
+                            <td>{{rs.pickupdate}} {{rs.pickuptime}}</td>
+                            <td>{{rs.total}}</td>
+                            <td>{{rs.status}}</td>
+
+
+                            </td>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+                    <div class="col-md-4 con-right">
+
+                        <label>User Panel</label>
+
+                        {% include "user_panel.html" %}
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!--//main-->
+
+{% endblock %}
+
+
+

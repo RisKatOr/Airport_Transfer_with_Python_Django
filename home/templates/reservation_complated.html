@@ -1,0 +1,76 @@
+{% extends "homebase.html" %}
+
+{% block title %} categorydata.title  {% endblock %}
+{% block keywords %} HOME PAGE {% endblock %}
+{% block description %} HOME PAGE {% endblock %}
+
+{% block head %}
+
+
+
+	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,900" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700" rel="stylesheet">
+{% endblock %}
+
+{% block slider %}
+
+{% endblock %}
+
+
+{% block content %}
+  		<!--/banner-->
+	<div class="banner-inner" id="home">
+		<!-- header -->
+
+		<!-- //header -->
+			<!-- banner-->
+			<div class="wrapper-inner">
+				<h3 class="logo text-center">
+					<a class="navbar-brand" href="index.html">
+						<i class="fas fa-cubes"></i> Hwaiting</a>
+				</h3>
+			</div>
+		</div>
+		<!-- //banner -->
+		<!--//nav-->
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="#">Home</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="#">Cars</a>
+			</li>
+			<li class="breadcrumb-item active">{{categorydata.title}}</li>
+		</ol>
+		<!--/main-->
+	<section class="banner-bottom-agile-w3ls" style="margin-top: -50px;">
+		<div class="container">
+			<h6 class="tittle-w3ls text-center">
+							<strong >Your reservation is complited. Thank you.  </strong>	<br><br>
+				Please check your reservation status at Profile/ Orders tab. Reservation status must be 'Confirmed'.
+
+
+
+
+			</h6><br><br><br>
+							<h5 class="tittle-w3ls text-center" style="color: #d90429"> <strong >	Your Reservation code is : </strong> {{ordercode}}</h5>
+
+
+
+		</div>
+	</section>
+	<!--//main-->
+
+{% endblock %}
+{% block footer %}
+	addEventListener("load", function () {
+		setTimeout(hideURLbar, 0);
+	}, false);
+
+	function hideURLbar() {
+		window.scrollTo(0, 1);
+	}
+{% endblock %}
+
+
+

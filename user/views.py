@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 
 from car.models import Category, Comment
 from home.models import UserProfile
+from reservation.models import Reserve
 from user.forms import UserUpdateForm, ProfileUpdateForm
 
 
@@ -83,3 +84,27 @@ def deletecomment(request , id):
     comments = Comment.objects.filter(id=id, user_id=current_user.id).delete()
     messages.success(request, 'Comment deleted!')
     return HttpResponseRedirect('/user/comments')
+
+@login_required(login_url = '/login')
+def reservations(request):
+    category = Category.objects.all()
+    current_user = request.user
+    reservations = Reserve.objects.filter(user_id=current_user.id)
+    context = {
+        'category': category,
+        'reservations': reservations,
+    }
+    return render(request, 'user_reservations.html', context)
+
+@login_required(login_url = '/login')
+def reservationdetail(request,id):
+    category = Category.objects.all()
+    current_user = request.user
+    reservation = Reserve.objects.filter(user_id=current_user.id, id=id)
+    reservationitem = Reserve.objects.filter(id=id)
+    context = {
+        'category': category,
+        'reservation': reservation,
+        'reservationitem': reservationitem,
+    }
+    return render(request, 'user_reservation_detail.html', context)
