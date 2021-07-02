@@ -6,25 +6,21 @@
         <h3 class="tittle-w3ls text-center">Our History</h3>
         <div class="row inner-sec-w3layouts-agileits">
             <div class="col-lg-6 about-img">
-                <img src="{% static 'images/ab.jpg' %}" class="img-fluid rounded" alt="">
+                <img src="{% static 'images/ust.jpg' %}" class="img-fluid rounded" alt="">
             </div>
             <div class="col-lg-6 about-info text-left">
                 <h4 class="sub-hd mb-4">We give the best</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore
-                    et dolore magna
-                    aliqua uta enim ad minim ven iam quis nostrud exercitation ullamco labor nisi ut aliquip exea
-                    commodo consequat duis
-                    aute irudre dolor in elit sed uta labore dolore reprehender</p>
-                <p class="sup-para mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod
-                    tempor incididunt ut labore et dolore magna
-                    aliqua uta enim ad minim ven iam quis nostrud exercitation ullamco labor nisi ut aliquip exea
-                    commodo consequat duis
-                    aute irudre dolor in elit sed uta labore dolore reprehender</p>
+                <p>At hoppa we've made the process of searching, comparing and booking your transport as simple as possible. We compare 1000s of providers from all over the world to help you make the right choice.
+                </p>
+                <p class="sup-para mt-2">We have now integrated 1000s of providers so that wherever your journey, and whatever your purpose for travel, you can select the right provider for a ride at home or abroad.
+
+Our journey has been a special one, and it's not over yet! We’ve helped over 30 million customers reach their destination and we're ready to help with your next ride.
+</p>
                 <div class="view my-4">
                     <a href="single.html" class="btn btn-primary read-m" data-toggle="modal"
                        data-target="#exampleModalCenter">View More</a>
                 </div>
-                <img src="{% static 'images/banner3.jpg' %}" class="img-fluid rounded" alt="">
+                <img src="{% static 'images/alt.jpg' %}" class="img-fluid rounded" alt="">
             </div>
         </div>
     </div>
@@ -223,138 +219,36 @@
         <h3 class="tittle-w3ls text-center">What our clients say</h3>
         <div class="inner-sec-w3layouts-agileits">
             <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <div class="icon-test">
-                        <i class="fas fa-thumbs-up"></i>
-                    </div>
-                    <div class="feedback-info">
-                        <div class="feedback-top p-4">
-                            <p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula
-                                pellentesque. </p>
-                        </div>
-                        <div class="feedback-grids">
-                            <div class="feedback-img">
-                                <img src="{% static 'images/t1.jpg' %}" class="img-fluid rounded" alt=""/>
+
+                     {% for dl in comment %}
+                         <div class="item">
+                            <div class="icon-test">
+                                <i class="fas fa-quote-left"></i>
                             </div>
-                            <div class="feedback-img-info">
-                                <h5>Mary Jane</h5>
-                                <p>United States
-                                    <span>(Company)</span>
-                                </p>
+                            <div class="feedback-info" >
+                                <div class="feedback-top p-4" style="min-height: 150px;">
+                                    <p> {{dl.comment}} </p>
+                                </div>
+                                <div class="feedback-grids" style="margin-top: 0px;">
+<!--                                    <div class="feedback-img">-->
+<!--                                      <img src="{{dl.user.image.url}}" style="  height: 150px; float: left"   class=" mx-auto d-block " alt="">-->
+
+<!--                                    </div>-->
+                                    <div class="feedback-img-info">
+                                        <h5>{{dl.user.first_name}} {{dl.user.last_name}}</h5>
+                                        <p>		   <a href="/car/{{dl.car_id}}/{{dl.car.slug}}" style="text-decoration: none; color: black">{{dl.car.title}} </a>
+                                            <span></span>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
                             </div>
-                            <div class="clearfix"></div>
                         </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="icon-test">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <div class="feedback-info">
-                        <div class="feedback-top p-4">
-                            <p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula
-                                pellentesque. </p>
-                        </div>
-                        <div class="feedback-grids">
-                            <div class="feedback-img">
-                                <img src="{% static 'images/t2.jpg' %}" class="img-fluid rounded" alt=""/>
-                            </div>
-                            <div class="feedback-img-info">
-                                <h5>Peter guptill</h5>
-                                <p>United States
-                                    <span>(Company)</span>
-                                </p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="icon-test">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <div class="feedback-info">
-                        <div class="feedback-top p-4">
-                            <p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula
-                                pellentesque. </p>
-                        </div>
-                        <div class="feedback-grids">
-                            <div class="feedback-img">
-                                <img src="{% static 'images/t3.jpg '%}" class="img-fluid rounded" alt=""/>
-                            </div>
-                            <div class="feedback-img-info">
-                                <h5>Steven Wilson</h5>
-                                <p>United States
-                                    <span>(Company)</span>
-                                </p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="icon-test">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <div class="feedback-info">
-                        <div class="feedback-top p-4">
-                            <p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula
-                                pellentesque. </p>
-                        </div>
-                        <div class="feedback-grids">
-                            <div class="feedback-img">
-                                <img src="{% static 'images/t1.jpg' %}" class="img-fluid rounded" alt=""/>
-                            </div>
-                            <div class="feedback-img-info">
-                                <h5>Mary Jane</h5>
-                                <p>Vestibulum</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="icon-test">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <div class="feedback-info">
-                        <div class="feedback-top p-4">
-                            <p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula
-                                pellentesque. </p>
-                        </div>
-                        <div class="feedback-grids">
-                            <div class="feedback-img">
-                                <img src="{% static 'images/t3.jpg' %}" class="img-fluid rounded" alt=""/>
-                            </div>
-                            <div class="feedback-img-info">
-                                <h5>Peter guptill</h5>
-                                <p>Vestibulum</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="icon-test">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <div class="feedback-info">
-                        <div class="feedback-top p-4 p-4">
-                            <p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula
-                                pellentesque. </p>
-                        </div>
-                        <div class="feedback-grids">
-                            <div class="feedback-img">
-                                <img src="{% static 'images/t4.jpg' %}" class="img-fluid rounded" alt=""/>
-                            </div>
-                            <div class="feedback-img-info">
-                                <h5>Steven Wilson</h5>
-                                <p>Vestibulum</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
+
+
+            {% endfor %}
+
+
             </div>
         </div>
     </div>

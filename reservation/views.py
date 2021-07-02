@@ -123,13 +123,15 @@ def bookcar(request):
             data.address = form.cleaned_data['address']
             data.total = total
             data.user_id = current_user.id
-
             data.ip = request.META.get('REMOTE_ADDR')
             detail = ReserveCar()
             detail.reserve_id = data.id  # Order Id
             detail.car_id = shopcart.car_id
             detail.user_id = current_user.id
             detail.distance = shopcart.distance
+            detail.price= total
+            # detail.save();
+
             ordercode = get_random_string(5).upper()  # random cod
             data.from_location = shopcart.from_location
             data.to_location = shopcart.to_location
@@ -147,13 +149,13 @@ def bookcar(request):
             messages.warning(request, form.errors)
             return HttpResponseRedirect("/reservation/")
     form = ReservationForm()
-    profile= UserProfile.objects.get(user_id= current_user.id)
+
     context = {
         'shopcart': shopcart,
         'category': category,
         'total': total,
         'form': form,
-        'profile': profile,
+
     }
     return HttpResponseRedirect(request,'reservation.html',context)
 

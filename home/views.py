@@ -17,6 +17,7 @@ from reservation.models import ShopCart
 def index(request):
     current_user = request.user
     setting = Setting.objects.get(pk=1)
+    comment = Comment.objects.all().order_by('?')[:10]
     sliderdata = Car.objects.all()[:4]
     category = Category.objects.all()
     daycar = Car.objects.all()[:3]
@@ -31,6 +32,7 @@ def index(request):
                'daycar':daycar,
                'lastcar': lastcar,
                'randomcar': randomcar,
+               'comment': comment,
                }
 
     return render(request, 'index.html', context)

@@ -105,9 +105,9 @@
 					  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							{% recursetree category %}
 
-							<a class="dropdown-item" {% if node.is_leaf_node %} href="/category/{{node.id}}/{{node.slug}}"  {% endif %}>{{ node.title }}</a>
+							<a class="dropdown-item" {% if node.is_leaf_node %} style="color: #d90429" href="/category/{{node.id}}/{{node.slug}}"  {% endif %}>{{ node.title }}</a>
 							  {% if not node.is_leaf_node %}
-							  <a class="dropdown-item" href="/category/{{node.id}}/{{node.slug}}" >{{ children }}</a>
+							  <a class="dropdown-item"  href="/category/{{node.id}}/{{node.slug}}" > {{ children }}</a>
 
 							  {% endif %}
 

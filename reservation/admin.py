@@ -15,9 +15,9 @@ class ReserveCarline(admin.TabularInline):
 
 class ReserveAdmin(admin.ModelAdmin):
 
-    list_display = ['first_name','last_name','phone','total','status']
+    list_display = ['first_name','last_name','pickupdate','pickuptime','total','status']
     list_filter = ['status']
-    readonly_fields = ('user','phone','first_name','last_name','phone','total','ip')
+    readonly_fields = ('user','phone','first_name','last_name','phone','total','ip','car','airline','flightnumber','flightarrivedate','flightarrivetime', 'pickuptime','pickupdate','country','address','note')
     inlines = [ReserveCarline]
     can_delete = False
 
